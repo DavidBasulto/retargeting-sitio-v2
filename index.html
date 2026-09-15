@@ -130,7 +130,7 @@ h1,h2,h3{letter-spacing:-.02em;line-height:1.1}
 .logo-item img{height:40px;width:auto;max-width:124px;object-fit:contain}
 
 /* ═══════════ 3 · CREATIVIDAD IA ═══════════ */
-.ia-section{background:#fff;padding:96px 0}
+.ia-section{background:#fff;padding:92px 0;border-top:1px solid #ececec}
 .ia-head{margin-bottom:38px}
 .ia-head h2{font-size:44px;font-weight:700;color:var(--rt-marine)}
 .ia-head p{max-width:none;width:100%;color:var(--rt-text-sec);font-size:17px;line-height:28px;margin-top:18px}
@@ -206,23 +206,89 @@ h1,h2,h3{letter-spacing:-.02em;line-height:1.1}
 .service-item:hover{background:rgba(255,255,255,.11);border-color:var(--rt-turquoise);transform:translateX(4px)}
 .service-item .n{font-size:13px;color:rgba(255,255,255,.4);min-width:28px}
 .service-item .nm{font-size:18px;font-weight:700}
+.service-item::after{content:'→';margin-left:auto;font-size:16px;font-weight:700;color:rgba(255,255,255,.35);transition:color .2s,transform .2s}
+.service-item:hover::after{color:var(--rt-turquoise);transform:translateX(3px)}
+
+/* ═══════════ SECCIONES DE SERVICIO (persuasión) ═══════════ */
+.svc{padding:92px 0;border-top:1px solid #ececec}
+.svc--gray{background:var(--rt-bg)}
+.svc--marine{background:var(--rt-marine);color:#fff;border-top:none}
+.svc-inner{display:grid;grid-template-columns:1.05fr .95fr;gap:64px;align-items:center}
+.svc-copy .eyebrow{color:var(--rt-turquoise-dark)}
+.svc--marine .svc-copy .eyebrow{color:var(--rt-turquoise-light)}
+.svc h2{font-size:clamp(30px,3.5vw,44px);font-weight:700;color:var(--rt-marine);line-height:1.07;letter-spacing:-.02em}
+.svc--marine h2{color:#fff}
+.svc h2 .hl{color:var(--rt-turquoise)}
+.svc--marine h2 .hl{color:var(--rt-turquoise-light)}
+.svc-lead{font-size:17px;line-height:28px;color:var(--rt-text-sec);margin-top:20px;max-width:480px}
+.svc--marine .svc-lead{color:rgba(255,255,255,.82)}
+.svc-cta{display:flex;gap:14px;flex-wrap:wrap;margin-top:32px}
+.svc-points{display:flex;flex-direction:column}
+.svc-point{padding:22px 0 22px 22px;border-left:2px solid var(--rt-border);position:relative;transition:border-color .2s}
+.svc-point + .svc-point{border-top:1px solid #e6e0d4}
+.svc--marine .svc-point{border-left-color:rgba(255,255,255,.18)}
+.svc--marine .svc-point + .svc-point{border-top-color:rgba(255,255,255,.12)}
+.svc-point:hover{border-left-color:var(--rt-turquoise)}
+.svc-point__t{display:block;font-size:19px;font-weight:700;color:var(--rt-marine);letter-spacing:-.01em}
+.svc--marine .svc-point__t{color:#fff}
+.svc-point__d{display:block;font-size:14px;line-height:1.5;color:var(--rt-text-sec);margin-top:5px}
+.svc--marine .svc-point__d{color:rgba(255,255,255,.7)}
+/* Pager stepper que conecta los servicios */
+.svc-scope{position:relative}
+.svc-scope section{scroll-margin-top:172px}
+.svc-pager{position:sticky;top:70px;z-index:40;background:rgba(255,255,255,.92);backdrop-filter:blur(12px);border-bottom:1px solid var(--rt-border);padding:16px 20px 14px}
+.svc-pager__track{position:relative;display:flex;justify-content:center;gap:clamp(26px,6vw,64px);width:fit-content;margin:0 auto}
+.svc-pager__line{position:absolute;top:19px;left:19px;right:19px;height:2px;background:var(--rt-border);border-radius:2px}
+.svc-pager__fill{position:absolute;top:0;left:0;height:100%;width:calc(var(--p,0)*100%);background:var(--rt-turquoise);border-radius:2px;transition:width .5s cubic-bezier(.65,0,.35,1),height .5s cubic-bezier(.65,0,.35,1)}
+.svc-pager a{position:relative;z-index:1;display:block}
+.svc-pager .dot{position:relative;display:flex;align-items:center;justify-content:center;width:38px;height:38px;border-radius:50%;background:#fff;border:2px solid var(--rt-border);font-size:12px;font-weight:700;color:var(--rt-text-sec);font-variant-numeric:tabular-nums;transition:transform .3s cubic-bezier(.34,1.56,.64,1),background .25s,border-color .25s,color .25s,box-shadow .25s}
+.svc-pager a:hover .dot{transform:translateY(-3px) scale(1.08);border-color:var(--rt-turquoise);color:var(--rt-marine)}
+.svc-pager a.active .dot{background:var(--rt-marine);border-color:var(--rt-marine);color:#fff;transform:scale(1.18);box-shadow:0 8px 20px -6px rgba(0,59,92,.5)}
+.svc-pager a.active .dot::after{content:'';position:absolute;inset:-6px;border-radius:50%;border:2px solid var(--rt-turquoise);animation:svcPulse 1.8s ease-out infinite}
+@keyframes svcPulse{0%{transform:scale(.9);opacity:.6}70%{transform:scale(1.28);opacity:0}100%{opacity:0}}
+.svc-pager .dot-label{display:none}
+.svc-pager__label{text-align:center;margin-top:13px;font-size:14px;font-weight:700;color:var(--rt-marine);letter-spacing:.01em;min-height:18px;transition:opacity .25s}
+.svc-pager__label b{color:var(--rt-turquoise-dark);margin-right:6px}
+@media(prefers-reduced-motion:reduce){.svc-pager a.active .dot::after{animation:none}.svc-pager__fill{transition:none}.svc-pager{transition:none}}
+
+/* Desktop: rail vertical flotante a la izquierda */
+@media(min-width:1300px){
+  .svc-scope section{scroll-margin-top:96px}
+  .svc-pager{position:fixed;top:50%;left:max(12px,calc(50% - 646px));transform:translateY(-50%);width:auto;padding:0;background:none;backdrop-filter:none;border:none;opacity:0;pointer-events:none;transition:opacity .4s ease}
+  .svc-pager.is-visible{opacity:1;pointer-events:auto}
+  .svc-pager__track{flex-direction:column;gap:clamp(18px,3.2vh,38px);width:auto;margin:0}
+  .svc-pager__line{top:19px;bottom:19px;left:19px;right:auto;width:2px;height:auto}
+  .svc-pager__fill{width:2px;height:calc(var(--p,0)*100%)}
+  .svc-pager .dot-label{display:block;position:absolute;left:52px;top:50%;transform:translateY(-50%) translateX(-6px);white-space:nowrap;font-size:13px;font-weight:700;color:var(--rt-marine);background:rgba(255,255,255,.95);padding:5px 13px;border-radius:100px;box-shadow:0 6px 18px -6px rgba(0,0,0,.28);opacity:0;pointer-events:none;transition:opacity .22s,transform .22s}
+  .svc-pager a:hover .dot-label{opacity:1;transform:translateY(-50%) translateX(0)}
+  .svc-pager a.active .dot-label{color:#fff;background:var(--rt-marine);box-shadow:0 10px 24px -8px rgba(0,59,92,.55)}
+  .svc-pager__label{display:none}
+}
+@media(max-width:820px){.svc-inner{grid-template-columns:1fr;gap:38px}.svc{padding:70px 0}.svc-pager{padding:13px 14px 11px}.svc-pager__track{gap:clamp(16px,7vw,40px)}.svc-pager .dot{width:32px;height:32px;font-size:11px}.svc-pager__line{top:16px;left:16px;right:16px}.svc-scope section{scroll-margin-top:150px}}
 
 /* ═══════════ 6 · ECOSISTEMA ═══════════ */
-.eco{background:#fff;padding:96px 0}
-.eco-head{max-width:640px;margin-bottom:44px}
-.eco-head h2{font-size:44px;font-weight:700;color:var(--rt-marine)}
-.eco-head p{margin-top:14px;font-size:16px;color:var(--rt-text-sec);line-height:26px}
-.eco-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
-.eco-card{display:flex;flex-direction:column;background:var(--rt-bg);border:1px solid var(--rt-border);border-radius:14px;padding:30px;transition:border-color .2s,box-shadow .2s,transform .2s}
-.eco-cta{align-self:flex-start;margin-top:auto;padding-top:18px;display:inline-flex;align-items:center;gap:6px;font-size:14px;font-weight:700;color:var(--rt-turquoise-dark);transition:gap .15s}
-.eco-cta:hover{gap:11px;color:var(--rt-turquoise)}
-.eco-card:hover{border-color:var(--rt-turquoise);box-shadow:0 4px 20px rgba(0,176,185,.12);transform:translateY(-3px)}
-.eco-card .nm{display:flex;align-items:center;gap:8px;font-size:19px;font-weight:700;color:var(--rt-marine)}
-.eco-card .nm .dot{width:8px;height:8px;border-radius:50%;background:var(--rt-turquoise)}
-.eco-card .nm--logo{min-height:30px}
-.eco-logo{height:30px;width:auto;display:block}
-.eco-card .tl{font-size:14px;color:var(--rt-violet);font-weight:500;margin:8px 0 10px}
-.eco-card .ds{font-size:14px;color:var(--rt-text-sec);line-height:22px}
+.eco{position:relative;overflow:hidden;padding:clamp(76px,9vw,120px) 0;background:linear-gradient(180deg,#f2f1fb 0%,#eaf3fb 100%)}
+.eco::before{content:'';position:absolute;top:-170px;left:-130px;width:540px;height:540px;border-radius:50%;background:radial-gradient(circle,rgba(73,73,191,.15),transparent 70%);pointer-events:none}
+.eco::after{content:'';position:absolute;bottom:-190px;right:-130px;width:540px;height:540px;border-radius:50%;background:radial-gradient(circle,rgba(0,176,185,.15),transparent 70%);pointer-events:none}
+.eco .wrap{position:relative;z-index:1}
+.eco-head{max-width:720px;margin:0 auto 54px;text-align:center}
+.eco-badge{display:inline-flex;align-items:center;gap:8px;background:#fff;border:1px solid rgba(73,73,191,.2);border-radius:100px;padding:8px 18px;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--rt-violet);box-shadow:0 6px 18px -10px rgba(73,73,191,.4);margin-bottom:22px}
+.eco-badge .dot{width:8px;height:8px;border-radius:50%;background:var(--rt-violet)}
+.eco-head h2{font-size:clamp(38px,4.6vw,56px);font-weight:700;color:var(--rt-marine);line-height:1.05;letter-spacing:-.02em}
+.eco-head h2 .hl{color:var(--rt-violet)}
+.eco-head p{margin:20px auto 0;font-size:18px;color:var(--rt-text-sec);line-height:29px;max-width:600px}
+.eco-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.eco-card{position:relative;display:flex;flex-direction:column;background:#fff;border:1px solid rgba(30,30,80,.06);border-radius:20px;padding:38px 32px 32px;box-shadow:0 12px 40px -22px rgba(40,40,90,.32);overflow:hidden;transition:box-shadow .25s,transform .25s}
+.eco-card::before{content:'';position:absolute;top:0;left:0;right:0;height:4px;background:linear-gradient(90deg,var(--rt-turquoise),var(--rt-violet))}
+.eco-card:hover{transform:translateY(-6px);box-shadow:0 28px 60px -26px rgba(40,40,90,.42)}
+.eco-cta{align-self:flex-start;margin-top:24px;padding:11px 20px;display:inline-flex;align-items:center;gap:7px;font-size:14px;font-weight:700;color:#fff;background:var(--rt-violet);border-radius:100px;box-shadow:0 8px 22px -10px rgba(73,73,191,.6);transition:transform .18s,box-shadow .18s,background .18s,gap .18s}
+.eco-cta:hover{background:#3a3aa0;transform:translateY(-2px);gap:11px;box-shadow:0 14px 30px -10px rgba(73,73,191,.65)}
+.eco-card .nm--logo{min-height:38px;display:flex;align-items:center;margin-bottom:20px}
+.eco-logo{height:36px;width:auto;display:block}
+.eco-logo--dai{height:32px}
+.eco-logo--podcast{height:30px}
+.eco-card .tl{font-size:17px;color:var(--rt-marine);font-weight:700;margin:0 0 10px;letter-spacing:-.01em;line-height:1.3}
+.eco-card .ds{font-size:14.5px;color:var(--rt-text-sec);line-height:23px}
 
 /* ═══════════ 7 · PARTNERS ═══════════ */
 .partners{background:var(--rt-marine);padding:80px 0 88px;position:relative;overflow:hidden;color:#fff;text-align:center}
@@ -424,30 +490,6 @@ h1,h2,h3{letter-spacing:-.02em;line-height:1.1}
   </div>
 </section>
 
-<!-- 3 · CREATIVIDAD IA -->
-<section class="ia-section" id="ia">
-  <div class="wrap">
-    <div class="ia-head">
-      <div>
-        <span class="eyebrow">Producción audiovisual con IA</span>
-        <h2>Creatividad Aumentada.</h2>
-      </div>
-      <p>La inteligencia artificial llegó a democratizar la creación: producimos contenido audiovisual sin mega producciones, optimizando plazos y presupuestos. En Rt adoptamos estas tecnologías para lograr piezas únicas en tiempos acotados.</p>
-    </div>
-    <div class="ia-pillars">
-      <div class="ia-pillar"><span class="ia-pillar__k">Plazos</span><span class="ia-pillar__v">Días, no semanas</span><span class="ia-pillar__d">sin rodaje, casting ni post extensos.</span></div>
-      <div class="ia-pillar"><span class="ia-pillar__k">Presupuesto</span><span class="ia-pillar__v">Sin mega producción</span><span class="ia-pillar__d">el foco va a la idea, no a la logística.</span></div>
-      <div class="ia-pillar"><span class="ia-pillar__k">Resultado</span><span class="ia-pillar__v">Piezas únicas</span><span class="ia-pillar__d">vertical y horizontal, listas para pauta.</span></div>
-    </div>
-    <div class="ia-carousel">
-      <div class="ia-track" id="iaGrid"></div>
-    </div>
-    <div class="ia-cta">
-      <a href="https://retargeting.cl/creatividad-aumentada" target="_blank" rel="noopener" class="btn btn-primary">Revisa nuestro portafolio →</a>
-    </div>
-  </div>
-</section>
-
 <!-- 4 · CASOS -->
 <section class="casos" id="casos">
   <div class="wrap">
@@ -522,22 +564,167 @@ h1,h2,h3{letter-spacing:-.02em;line-height:1.1}
         <p>Partimos desde el problema real, no desde el servicio que queremos vender.</p>
       </div>
       <div class="services">
-        <div class="service-item"><span class="n">01</span><span class="nm">Estrategia digital</span></div>
-        <div class="service-item"><span class="n">02</span><span class="nm">Creatividad y contenido</span></div>
-        <div class="service-item"><span class="n">03</span><span class="nm">Experiencia web</span></div>
-        <div class="service-item"><span class="n">04</span><span class="nm">Growth marketing</span></div>
-        <div class="service-item"><span class="n">05</span><span class="nm">Publicidad digital</span></div>
+        <a class="service-item" href="#svc-estrategia"><span class="n">01</span><span class="nm">Estrategia digital</span></a>
+        <a class="service-item" href="#ia"><span class="n">02</span><span class="nm">Creatividad aumentada</span></a>
+        <a class="service-item" href="#svc-contenido"><span class="n">03</span><span class="nm">Contenido y social media</span></a>
+        <a class="service-item" href="#svc-web"><span class="n">04</span><span class="nm">Experiencia web</span></a>
+        <a class="service-item" href="#svc-growth"><span class="n">05</span><span class="nm">Growth marketing</span></a>
+        <a class="service-item" href="#svc-ads"><span class="n">06</span><span class="nm">Publicidad digital</span></a>
       </div>
     </div>
   </div>
 </section>
 
+<!-- 5b · SECCIONES DE SERVICIO -->
+<div class="svc-scope">
+<nav class="svc-pager" aria-label="Navegación de servicios">
+  <div class="svc-pager__track">
+    <span class="svc-pager__line"><span class="svc-pager__fill" id="svcPagerFill"></span></span>
+    <a href="#svc-estrategia" data-svc="svc-estrategia" data-label="Estrategia digital" aria-label="Estrategia digital"><span class="dot">01</span><span class="dot-label">Estrategia digital</span></a>
+    <a href="#ia" data-svc="ia" data-label="Creatividad aumentada" aria-label="Creatividad aumentada"><span class="dot">02</span><span class="dot-label">Creatividad aumentada</span></a>
+    <a href="#svc-contenido" data-svc="svc-contenido" data-label="Contenido y social media" aria-label="Contenido y social media"><span class="dot">03</span><span class="dot-label">Contenido y social media</span></a>
+    <a href="#svc-web" data-svc="svc-web" data-label="Experiencia web" aria-label="Experiencia web"><span class="dot">04</span><span class="dot-label">Experiencia web</span></a>
+    <a href="#svc-growth" data-svc="svc-growth" data-label="Growth marketing" aria-label="Growth marketing"><span class="dot">05</span><span class="dot-label">Growth marketing</span></a>
+    <a href="#svc-ads" data-svc="svc-ads" data-label="Publicidad digital" aria-label="Publicidad digital"><span class="dot">06</span><span class="dot-label">Publicidad digital</span></a>
+  </div>
+  <div class="svc-pager__label" id="svcPagerLabel"><b>01</b> Estrategia digital</div>
+</nav>
+<section class="svc svc--gray" id="svc-estrategia">
+  <div class="wrap">
+    <div class="svc-inner">
+      <div class="svc-copy">
+        <span class="eyebrow">Estrategia digital</span>
+        <h2>La mayoría <span class="hl">gasta</span>. Nosotros hacemos que rinda.</h2>
+        <p class="svc-lead">Marcas que dejaron de improvisar y empezaron a invertir con un plan detrás de cada peso. Ahí es donde queremos verte.</p>
+        <div class="svc-cta">
+          <a href="#contacto" class="btn btn-primary">Cotizar mi estrategia →</a>
+          <a href="#casos" class="btn btn-outline">Ver casos de éxito</a>
+        </div>
+      </div>
+      <div class="svc-points">
+        <div class="svc-point"><span class="svc-point__t">Deja de disparar al aire</span><span class="svc-point__d">cada decisión con un porqué y un número que la respalda.</span></div>
+        <div class="svc-point"><span class="svc-point__t">Tu presupuesto, donde convierte</span><span class="svc-point__d">cortamos lo que no rinde y doblamos lo que sí.</span></div>
+        <div class="svc-point"><span class="svc-point__t">Claridad para decidir</span><span class="svc-point__d">sabes qué esperar antes de invertir, no después.</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 02 · CREATIVIDAD AUMENTADA -->
+<section class="ia-section" id="ia">
+  <div class="wrap">
+    <div class="ia-head">
+      <div>
+        <span class="eyebrow">Producción audiovisual con IA</span>
+        <h2>Creatividad Aumentada.</h2>
+      </div>
+      <p>La inteligencia artificial llegó a democratizar la creación: producimos contenido audiovisual sin mega producciones, optimizando plazos y presupuestos. En Rt adoptamos estas tecnologías para lograr piezas únicas en tiempos acotados.</p>
+    </div>
+    <div class="ia-pillars">
+      <div class="ia-pillar"><span class="ia-pillar__k">Plazos</span><span class="ia-pillar__v">Días, no semanas</span><span class="ia-pillar__d">sin rodaje, casting ni post extensos.</span></div>
+      <div class="ia-pillar"><span class="ia-pillar__k">Presupuesto</span><span class="ia-pillar__v">Sin mega producción</span><span class="ia-pillar__d">el foco va a la idea, no a la logística.</span></div>
+      <div class="ia-pillar"><span class="ia-pillar__k">Resultado</span><span class="ia-pillar__v">Piezas únicas</span><span class="ia-pillar__d">vertical y horizontal, listas para pauta.</span></div>
+    </div>
+    <div class="ia-carousel">
+      <div class="ia-track" id="iaGrid"></div>
+    </div>
+    <div class="ia-cta">
+      <a href="https://retargeting.cl/creatividad-aumentada" target="_blank" rel="noopener" class="btn btn-primary">Revisa nuestro portafolio →</a>
+    </div>
+  </div>
+</section>
+
+<section class="svc svc--gray" id="svc-contenido">
+  <div class="wrap">
+    <div class="svc-inner">
+      <div class="svc-copy">
+        <span class="eyebrow">Contenido y social media</span>
+        <h2>Publicar por publicar no vende. <span class="hl">Contenido con intención</span>, sí.</h2>
+        <p class="svc-lead">Deja de competir por likes y empieza a competir por clientes. Tu marca merece un lugar en la cabeza de la gente, no solo en su feed.</p>
+        <div class="svc-cta">
+          <a href="#contacto" class="btn btn-primary">Quiero cotizar →</a>
+          <a href="#casos" class="btn btn-outline">Ver casos de éxito</a>
+        </div>
+      </div>
+      <div class="svc-points">
+        <div class="svc-point"><span class="svc-point__t">Presencia que se recuerda</span><span class="svc-point__d">marcas que la gente sigue porque quiere, no porque tocó.</span></div>
+        <div class="svc-point"><span class="svc-point__t">Comunidad, no solo audiencia</span><span class="svc-point__d">seguidores que conversan, comparten y compran.</span></div>
+        <div class="svc-point"><span class="svc-point__t">Cada pieza trabaja para ti</span><span class="svc-point__d">contenido con un objetivo, no con relleno de calendario.</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="svc" id="svc-web">
+  <div class="wrap">
+    <div class="svc-inner">
+      <div class="svc-copy">
+        <span class="eyebrow">Experiencia web</span>
+        <h2>Tu sitio es tu mejor vendedor. <span class="hl">Que trabaje como uno.</span></h2>
+        <p class="svc-lead">No basta con verse bien. Cada visita que no convierte es una venta que le regalaste a la competencia. Recuperémosla.</p>
+        <div class="svc-cta">
+          <a href="#contacto" class="btn btn-primary">Cotizar mi sitio →</a>
+          <a href="#casos" class="btn btn-outline">Ver casos de éxito</a>
+        </div>
+      </div>
+      <div class="svc-points">
+        <div class="svc-point"><span class="svc-point__t">Rápido o invisible</span><span class="svc-point__d">quien espera se va. Tu sitio carga antes de que eso pase.</span></div>
+        <div class="svc-point"><span class="svc-point__t">Diseñado para convertir</span><span class="svc-point__d">cada botón y cada scroll empuja hacia la acción.</span></div>
+        <div class="svc-point"><span class="svc-point__t">Una experiencia que da confianza</span><span class="svc-point__d">la gente compra donde se siente segura.</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="svc svc--marine" id="svc-growth">
+  <div class="wrap">
+    <div class="svc-inner">
+      <div class="svc-copy">
+        <span class="eyebrow">Growth marketing</span>
+        <h2>Crecer no es suerte. <span class="hl">Es método.</span></h2>
+        <p class="svc-lead">Mientras otros esperan que la campaña funcione, nosotros la mejoramos cada semana hasta que los números suben y se quedan arriba.</p>
+        <div class="svc-cta">
+          <a href="#contacto" class="btn btn-primary">Quiero crecer →</a>
+          <a href="#casos" class="btn btn-ghost">Ver casos de éxito</a>
+        </div>
+      </div>
+      <div class="svc-points">
+        <div class="svc-point"><span class="svc-point__t">Mejora que no se detiene</span><span class="svc-point__d">probamos, medimos y ajustamos hasta que rinde más.</span></div>
+        <div class="svc-point"><span class="svc-point__t">Decisiones con data, no con corazonadas</span><span class="svc-point__d">lo que funciona se escala, lo que no se corta.</span></div>
+        <div class="svc-point"><span class="svc-point__t">Crecimiento que se sostiene</span><span class="svc-point__d">resultados que se quedan, no picos que se caen.</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="svc svc--gray" id="svc-ads">
+  <div class="wrap">
+    <div class="svc-inner">
+      <div class="svc-copy">
+        <span class="eyebrow">Publicidad digital</span>
+        <h2>Pauta que <span class="hl">no quema presupuesto</span>.</h2>
+        <p class="svc-lead">Cada peso invertido persigue un resultado, no una impresión. Si tu pauta no vende, estás pagando por ser visto y nada más.</p>
+        <div class="svc-cta">
+          <a href="#contacto" class="btn btn-primary">Cotizar mi pauta →</a>
+          <a href="#casos" class="btn btn-outline">Ver casos de éxito</a>
+        </div>
+      </div>
+      <div class="svc-points">
+        <div class="svc-point"><span class="svc-point__t">Inversión que se paga sola</span><span class="svc-point__d">el foco está en el retorno, no en el alcance vacío.</span></div>
+        <div class="svc-point"><span class="svc-point__t">Le hablas a quien sí compra</span><span class="svc-point__d">segmentación fina para no gastar en quien nunca iba a convertir.</span></div>
+        <div class="svc-point"><span class="svc-point__t">Optimización en tiempo real</span><span class="svc-point__d">movemos el presupuesto hacia lo que está funcionando hoy.</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+</div><!-- /svc-scope -->
+
 <!-- 6 · ECOSISTEMA -->
 <section class="eco">
   <div class="wrap">
     <div class="eco-head">
-      <span class="eyebrow">El ecosistema Rt</span>
-      <h2>Construimos algo más que campañas.</h2>
+      <span class="eco-badge"><span class="dot"></span>El ecosistema Rt</span>
+      <h2>Construimos <span class="hl">algo más</span> que campañas.</h2>
       <p>Una agencia que solo ejecuta tiene un techo. Nosotros construimos estructuras para crecer.</p>
     </div>
     <div class="eco-grid">
@@ -757,6 +944,39 @@ document.querySelector('.nav-toggle').addEventListener('click',function(){docume
 document.querySelectorAll('.nav-links a').forEach(function(a){a.addEventListener('click',function(){document.querySelector('.nav-links').classList.remove('open')})});
 document.getElementById('contactForm').addEventListener('submit',function(e){e.preventDefault();var b=this.querySelector('button');b.textContent='Mensaje recibido ✓';b.disabled=true;this.reset();setTimeout(function(){b.textContent='Conversemos →';b.disabled=false},3200)});
 document.getElementById('year').textContent=new Date().getFullYear();
+
+/* ---- Pager de servicios: resalta el activo al hacer scroll ---- */
+(function(){
+  var pager=document.querySelector('.svc-pager');
+  if(!pager) return;
+  var links={};
+  pager.querySelectorAll('a').forEach(function(a){links[a.dataset.svc]=a;});
+  var ids=['svc-estrategia','ia','svc-contenido','svc-web','svc-growth','svc-ads'];
+  var secs=ids.map(function(id){return document.getElementById(id);}).filter(Boolean);
+  var fill=document.getElementById('svcPagerFill');
+  var label=document.getElementById('svcPagerLabel');
+  var pad=['01','02','03','04','05','06'];
+  function setActive(id){
+    var idx=ids.indexOf(id); if(idx<0) return;
+    Object.keys(links).forEach(function(k){links[k].classList.toggle('active',k===id);});
+    if(fill) fill.style.setProperty('--p', idx/(ids.length-1));
+    var a=links[id];
+    if(label&&a){label.innerHTML='<b>'+pad[idx]+'</b> '+(a.dataset.label||'');}
+  }
+  /* Muestra/oculta el rail flotante mientras el bloque de servicios está a la vista */
+  var scope=document.querySelector('.svc-scope');
+  if(scope&&'IntersectionObserver' in window){
+    new IntersectionObserver(function(en){
+      pager.classList.toggle('is-visible', en[0].isIntersecting);
+    },{rootMargin:'-30% 0px -30% 0px',threshold:0}).observe(scope);
+  }
+  if('IntersectionObserver' in window){
+    var io=new IntersectionObserver(function(entries){
+      entries.forEach(function(e){if(e.isIntersecting){setActive(e.target.id);}});
+    },{rootMargin:'-45% 0px -50% 0px',threshold:0});
+    secs.forEach(function(s){io.observe(s);});
+  }
+})();
 </script>
 </body>
 </html>
