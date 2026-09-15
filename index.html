@@ -161,7 +161,8 @@ h1,h2,h3{letter-spacing:-.02em;line-height:1.1}
 
 /* ═══════════ 4 · CASOS ═══════════ */
 .casos{background:var(--rt-bg);padding:96px 0}
-.casos h2.sec-title{font-size:44px;font-weight:700;color:var(--rt-marine);margin-bottom:40px}
+.casos h2.sec-title{font-size:44px;font-weight:700;color:var(--rt-marine);margin-bottom:14px}
+.casos-sub{max-width:680px;color:var(--rt-text-sec);font-size:17px;line-height:27px;margin:0 0 42px}
 .caso-card{background:#fff;border-radius:16px;overflow:hidden;display:grid;grid-template-columns:360px 1fr;margin-bottom:26px;box-shadow:0 6px 24px rgba(0,0,0,.06)}
 .caso-card.flip{grid-template-columns:1fr 360px}
 .caso-card.flip .caso-visual{order:2}
@@ -188,6 +189,12 @@ h1,h2,h3{letter-spacing:-.02em;line-height:1.1}
 .metric-num.hi{color:var(--rt-turquoise)}
 .metric-lbl{font-size:13px;color:var(--rt-text-sec);margin-top:2px;max-width:150px}
 .caso-award{display:inline-block;margin-top:16px;font-size:12px;color:var(--rt-yellow);font-weight:700}
+.caso-cta{align-self:flex-start;display:inline-flex;align-items:center;gap:8px;margin-top:22px;font-size:14px;font-weight:700;color:#fff;background:var(--rt-turquoise);padding:11px 22px;border-radius:100px;box-shadow:0 8px 22px -8px rgba(0,176,185,.55);transition:background .18s,transform .18s,box-shadow .18s}
+.caso-cta:hover{background:var(--rt-turquoise-dark);transform:translateY(-2px);box-shadow:0 14px 28px -8px rgba(0,176,185,.6)}
+.caso-cta::after{content:'→';transition:transform .18s}
+.caso-cta:hover::after{transform:translateX(4px)}
+.casos-cta{display:flex;flex-direction:column;align-items:center;gap:16px;text-align:center;margin-top:44px;padding-top:40px;border-top:1px solid #e6e0d4}
+.casos-cta p{font-size:20px;font-weight:700;color:var(--rt-marine)}
 
 /* ═══════════ 5 · MODELO ═══════════ */
 .modelo{background:var(--rt-marine);color:#fff;padding:96px 0}
@@ -206,10 +213,14 @@ h1,h2,h3{letter-spacing:-.02em;line-height:1.1}
 .eco-head h2{font-size:44px;font-weight:700;color:var(--rt-marine)}
 .eco-head p{margin-top:14px;font-size:16px;color:var(--rt-text-sec);line-height:26px}
 .eco-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
-.eco-card{background:var(--rt-bg);border:1px solid var(--rt-border);border-radius:14px;padding:30px;transition:border-color .2s,box-shadow .2s,transform .2s}
+.eco-card{display:flex;flex-direction:column;background:var(--rt-bg);border:1px solid var(--rt-border);border-radius:14px;padding:30px;transition:border-color .2s,box-shadow .2s,transform .2s}
+.eco-cta{align-self:flex-start;margin-top:auto;padding-top:18px;display:inline-flex;align-items:center;gap:6px;font-size:14px;font-weight:700;color:var(--rt-turquoise-dark);transition:gap .15s}
+.eco-cta:hover{gap:11px;color:var(--rt-turquoise)}
 .eco-card:hover{border-color:var(--rt-turquoise);box-shadow:0 4px 20px rgba(0,176,185,.12);transform:translateY(-3px)}
 .eco-card .nm{display:flex;align-items:center;gap:8px;font-size:19px;font-weight:700;color:var(--rt-marine)}
 .eco-card .nm .dot{width:8px;height:8px;border-radius:50%;background:var(--rt-turquoise)}
+.eco-card .nm--logo{min-height:30px}
+.eco-logo{height:30px;width:auto;display:block}
 .eco-card .tl{font-size:14px;color:var(--rt-violet);font-weight:500;margin:8px 0 10px}
 .eco-card .ds{font-size:14px;color:var(--rt-text-sec);line-height:22px}
 
@@ -441,6 +452,7 @@ h1,h2,h3{letter-spacing:-.02em;line-height:1.1}
 <section class="casos" id="casos">
   <div class="wrap">
     <h2 class="sec-title parallax-txt">El trabajo habla antes que nosotros.</h2>
+    <p class="casos-sub">Casos reales donde acompañamos a cada marca en la decisión, la tecnología y la creatividad, hasta convertir el problema en resultados que se miden.</p>
     <div class="parallax-vis">
       <!-- Abastible -->
       <article class="caso-card from-left">
@@ -456,6 +468,7 @@ h1,h2,h3{letter-spacing:-.02em;line-height:1.1}
             <div><div class="metric-num hi">+354%</div><div class="metric-lbl">sesiones directas</div></div>
           </div>
           <span class="caso-award">★ Comercial del Mes · Publimark · IAB MIXX Chile 2026</span>
+          <a class="caso-cta" href="#contacto">Ver caso</a>
         </div>
       </article>
       <!-- JetSMART -->
@@ -472,6 +485,7 @@ h1,h2,h3{letter-spacing:-.02em;line-height:1.1}
             <div><div class="metric-num hi">Times Sq.</div><div class="metric-lbl">exhibición en pantallas de Nueva York</div></div>
           </div>
           <span class="caso-award">Concepto Vendaval · Producción técnica e IA Retargeting</span>
+          <a class="caso-cta" href="#contacto">Ver caso</a>
         </div>
       </article>
       <!-- Cruz Verde -->
@@ -486,8 +500,13 @@ h1,h2,h3{letter-spacing:-.02em;line-height:1.1}
             <div><div class="metric-num hi">3</div><div class="metric-lbl">universos: Mood Flow, Safe, Play</div></div>
             <div><div class="metric-num">0</div><div class="metric-lbl">piezas censuradas en plataformas</div></div>
           </div>
+          <a class="caso-cta" href="#contacto">Ver caso</a>
         </div>
       </article>
+    </div>
+    <div class="casos-cta">
+      <p>¿Tu marca tiene un desafío parecido?</p>
+      <a href="#contacto" class="btn btn-primary">Conversemos →</a>
     </div>
   </div>
 </section>
@@ -522,9 +541,9 @@ h1,h2,h3{letter-spacing:-.02em;line-height:1.1}
       <p>Una agencia que solo ejecuta tiene un techo. Nosotros construimos estructuras para crecer.</p>
     </div>
     <div class="eco-grid">
-      <div class="eco-card"><div class="nm"><span class="dot"></span>Rt Academy</div><div class="tl">Aprender a hacer, no solo a pedir.</div><div class="ds">Capacitaciones en IA, performance y marketing digital para organizaciones, municipios y colegios.</div></div>
-      <div class="eco-card"><div class="nm"><span class="dot"></span>Rt Dai</div><div class="tl">Tu inversión podría rendir más.</div><div class="ds">Auditoría honesta de tu operación digital. Detectamos dónde se pierde plata antes de proponer dónde invertir.</div></div>
-      <div class="eco-card"><div class="nm"><span class="dot"></span>Rt Podcast</div><div class="tl">No vendemos. Pensamos en voz alta.</div><div class="ds">Conversaciones sobre marketing, tecnología y negocios. Sin agenda comercial.</div></div>
+      <div class="eco-card"><div class="nm nm--logo"><img class="eco-logo" src="assets/img/rt-academy-logo.webp" alt="Rt Academy"></div><div class="tl">Aprender a hacer, no solo a pedir.</div><div class="ds">Capacitaciones en IA, performance y marketing digital para organizaciones, municipios y colegios.</div><a class="eco-cta" href="#contacto">Conocer capacitaciones →</a></div>
+      <div class="eco-card"><div class="nm nm--logo"><img class="eco-logo eco-logo--dai" src="assets/img/rt-dai-logo.webp" alt="Rt DAI"></div><div class="tl">Tu inversión podría rendir más.</div><div class="ds">Auditoría honesta de tu operación digital. Detectamos dónde se pierde plata antes de proponer dónde invertir.</div><a class="eco-cta" href="#contacto">Pedir auditoría →</a></div>
+      <div class="eco-card"><div class="nm nm--logo"><img class="eco-logo eco-logo--podcast" src="assets/img/rt-podcast-logo.webp" alt="Rt Podcast"></div><div class="tl">Un estudio listo para grabar tu contenido.</div><div class="ds">Sala de podcast equipada que arrendamos a nuestros clientes para producir su propio contenido en audio y video.</div><a class="eco-cta" href="#contacto">Reservar sala →</a></div>
     </div>
   </div>
 </section>
