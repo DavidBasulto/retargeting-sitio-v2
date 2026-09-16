@@ -236,7 +236,17 @@ h1,h2,h3{letter-spacing:-.02em;line-height:1.1}
 .pll-float{animation:pllFloat 8s ease-in-out infinite}
 @keyframes pllFloat{0%{transform:translate3d(0,0,0) rotate(0deg)}25%{transform:translate3d(7px,-9px,0) rotate(.35deg)}50%{transform:translate3d(0,-15px,0) rotate(0deg)}75%{transform:translate3d(-7px,-9px,0) rotate(-.35deg)}100%{transform:translate3d(0,0,0) rotate(0deg)}}
 @media(prefers-reduced-motion:reduce){.pll-float{animation:none}}
-.svc--media .svc-inner{grid-template-columns:0.72fr 1.28fr;gap:48px}
+/* Mini-features (icono + texto) bajo los CTAs de Contenido */
+.content-hero__feats{display:flex;gap:26px;margin-top:40px;flex-wrap:wrap}
+.chf{display:flex;align-items:center;gap:11px;font-size:12px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:var(--rt-text-sec);line-height:1.2}
+.chf__ic{flex:0 0 auto;width:36px;height:36px;border-radius:9px;background:#fff;border:1px solid var(--rt-border);display:flex;align-items:center;justify-content:center;color:var(--rt-turquoise-dark)}
+.chf__ic svg{width:18px;height:18px}
+/* Separador tipo onda entre secciones: acento flotando sobre el límite */
+.wave-sep{position:relative;z-index:1;height:0;line-height:0;pointer-events:none;overflow:visible;display:flex}
+.wave-sep svg{display:block;opacity:1;transform:translateY(-50%)}
+.wave-sep--right{justify-content:flex-end}
+.wave-sep--right svg{transform:translateY(-50%) scaleX(-1)}
+.svc--media .svc-inner{grid-template-columns:0.9fr 1.1fr;gap:48px}
 .svc-points{display:flex;flex-direction:column}
 .svc-point{padding:22px 0 22px 22px;border-left:2px solid var(--rt-border);position:relative;transition:border-color .2s}
 .svc-point + .svc-point{border-top:1px solid #e6e0d4}
@@ -634,6 +644,10 @@ h1,h2,h3{letter-spacing:-.02em;line-height:1.1}
   </div>
 </section>
 
+<div class="wave-sep wave-sep--right" aria-hidden="true">
+  <svg width="309" height="88" viewBox="0 0 309 88" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M6.92667 88C29.206 88 50.0479 79.594 65.7692 64.2707L66.3082 63.7453C76.9089 53.4129 94.0675 53.4129 104.668 63.7453C120.389 79.0687 141.321 87.4746 163.511 87.4746C185.79 87.4746 206.632 79.0687 222.353 63.7453L222.713 63.395C233.313 53.0627 250.472 53.0627 261.073 63.395C272.033 74.0776 289.82 74.0776 300.78 63.395C311.74 52.7124 311.74 35.3751 300.78 24.6925C285.059 9.36915 264.127 0.963184 241.937 0.963184C219.748 0.963184 198.816 9.36915 183.095 24.6925L182.736 25.0428C172.135 35.3751 154.976 35.3751 144.376 25.0428C128.654 9.7194 107.723 1.31343 85.5331 1.31343C63.2538 1.31343 42.4118 9.7194 26.6906 25.0428L26.1516 25.5682C21.0309 30.5592 14.2034 33.2736 7.01651 33.2736C-0.260208 33.2736 -6.99789 30.5592 -12.2084 25.5682L-14.0051 23.8169C-29.8162 8.40597 -50.748 0 -72.9375 0C-95.1269 0 -116.059 8.40597 -131.78 23.7294C-142.74 34.4119 -142.74 51.7493 -131.78 62.4318C-120.82 73.1144 -103.033 73.1144 -92.0725 62.4318C-81.4719 52.0995 -64.3132 52.0995 -53.7126 62.4318L-51.9159 64.1831C-36.2844 79.5065 -15.3526 88 6.92667 88Z" fill="#2CD5C4" fill-opacity="0.8"></path></svg>
+</div>
+
 <!-- 02 · CREATIVIDAD AUMENTADA -->
 <section class="ia-section" id="ia">
   <div class="wrap">
@@ -658,6 +672,10 @@ h1,h2,h3{letter-spacing:-.02em;line-height:1.1}
   </div>
 </section>
 
+<div class="wave-sep" aria-hidden="true">
+  <svg width="309" height="88" viewBox="0 0 309 88" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M6.92667 88C29.206 88 50.0479 79.594 65.7692 64.2707L66.3082 63.7453C76.9089 53.4129 94.0675 53.4129 104.668 63.7453C120.389 79.0687 141.321 87.4746 163.511 87.4746C185.79 87.4746 206.632 79.0687 222.353 63.7453L222.713 63.395C233.313 53.0627 250.472 53.0627 261.073 63.395C272.033 74.0776 289.82 74.0776 300.78 63.395C311.74 52.7124 311.74 35.3751 300.78 24.6925C285.059 9.36915 264.127 0.963184 241.937 0.963184C219.748 0.963184 198.816 9.36915 183.095 24.6925L182.736 25.0428C172.135 35.3751 154.976 35.3751 144.376 25.0428C128.654 9.7194 107.723 1.31343 85.5331 1.31343C63.2538 1.31343 42.4118 9.7194 26.6906 25.0428L26.1516 25.5682C21.0309 30.5592 14.2034 33.2736 7.01651 33.2736C-0.260208 33.2736 -6.99789 30.5592 -12.2084 25.5682L-14.0051 23.8169C-29.8162 8.40597 -50.748 0 -72.9375 0C-95.1269 0 -116.059 8.40597 -131.78 23.7294C-142.74 34.4119 -142.74 51.7493 -131.78 62.4318C-120.82 73.1144 -103.033 73.1144 -92.0725 62.4318C-81.4719 52.0995 -64.3132 52.0995 -53.7126 62.4318L-51.9159 64.1831C-36.2844 79.5065 -15.3526 88 6.92667 88Z" fill="#2CD5C4" fill-opacity="0.8"></path></svg>
+</div>
+
 <section class="svc svc--gray svc--media" id="svc-contenido">
   <div class="wrap">
     <div class="svc-inner">
@@ -669,6 +687,11 @@ h1,h2,h3{letter-spacing:-.02em;line-height:1.1}
           <a href="#contacto" class="btn btn-primary">Quiero cotizar →</a>
           <a href="#casos" class="btn btn-outline">Ver casos de éxito</a>
         </div>
+        <div class="content-hero__feats">
+          <div class="chf"><span class="chf__ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20V11M10 20V5M16 20v-6M21 20H3"/></svg></span><span>Estrategia<br>real</span></div>
+          <div class="chf"><span class="chf__ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="3.2"/><path d="M3.5 20c0-3 2.6-5 5.5-5s5.5 2 5.5 5"/><path d="M16.5 5.6a3.2 3.2 0 0 1 0 6M21 20c0-2.4-1.8-4-3.8-4.6"/></svg></span><span>Audiencia<br>relevante</span></div>
+          <div class="chf"><span class="chf__ic"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l1.7 5.6L19.5 9l-5.8 1.4L12 16l-1.7-5.6L4.5 9l5.8-1.4z"/></svg></span><span>Resultados<br>medibles</span></div>
+        </div>
       </div>
       <div class="svc-visual svc-parallax" id="socialParallax">
         <div class="pll-layer pll-back"><img src="assets/img/fondo-social.webp" alt="Persona gestionando contenido y redes sociales" loading="lazy"></div>
@@ -677,6 +700,10 @@ h1,h2,h3{letter-spacing:-.02em;line-height:1.1}
     </div>
   </div>
 </section>
+
+<div class="wave-sep wave-sep--right" aria-hidden="true">
+  <svg width="309" height="88" viewBox="0 0 309 88" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M6.92667 88C29.206 88 50.0479 79.594 65.7692 64.2707L66.3082 63.7453C76.9089 53.4129 94.0675 53.4129 104.668 63.7453C120.389 79.0687 141.321 87.4746 163.511 87.4746C185.79 87.4746 206.632 79.0687 222.353 63.7453L222.713 63.395C233.313 53.0627 250.472 53.0627 261.073 63.395C272.033 74.0776 289.82 74.0776 300.78 63.395C311.74 52.7124 311.74 35.3751 300.78 24.6925C285.059 9.36915 264.127 0.963184 241.937 0.963184C219.748 0.963184 198.816 9.36915 183.095 24.6925L182.736 25.0428C172.135 35.3751 154.976 35.3751 144.376 25.0428C128.654 9.7194 107.723 1.31343 85.5331 1.31343C63.2538 1.31343 42.4118 9.7194 26.6906 25.0428L26.1516 25.5682C21.0309 30.5592 14.2034 33.2736 7.01651 33.2736C-0.260208 33.2736 -6.99789 30.5592 -12.2084 25.5682L-14.0051 23.8169C-29.8162 8.40597 -50.748 0 -72.9375 0C-95.1269 0 -116.059 8.40597 -131.78 23.7294C-142.74 34.4119 -142.74 51.7493 -131.78 62.4318C-120.82 73.1144 -103.033 73.1144 -92.0725 62.4318C-81.4719 52.0995 -64.3132 52.0995 -53.7126 62.4318L-51.9159 64.1831C-36.2844 79.5065 -15.3526 88 6.92667 88Z" fill="#2CD5C4" fill-opacity="0.8"></path></svg>
+</div>
 
 <section class="svc" id="svc-web">
   <div class="wrap">
