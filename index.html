@@ -248,6 +248,33 @@ h1,h2,h3{letter-spacing:-.02em;line-height:1.1}
 .wave-sep--right svg{transform:translateY(-50%) scaleX(-1)}
 .svc--media .svc-inner{grid-template-columns:0.9fr 1.1fr;gap:48px}
 .svc-points{display:flex;flex-direction:column}
+.svc-points--inline{margin-top:34px}
+/* Puntos con iconografía (chip) estilo Contenido */
+.svc-points--icons .svc-point{display:flex;gap:15px;align-items:flex-start;border-left:none;padding:18px 0}
+.svc-points--icons .svc-point + .svc-point{border-top:1px solid #ececec}
+.svc-point__ic{flex:0 0 auto;width:38px;height:38px;border-radius:10px;background:rgba(44,213,196,.14);border:1px solid rgba(0,147,154,.20);display:flex;align-items:center;justify-content:center;color:var(--rt-turquoise-dark)}
+.svc-point__ic svg{width:19px;height:19px}
+.svc-point__tx{display:flex;flex-direction:column;min-width:0}
+/* Experiencia web: imagen a la izquierda, texto a la derecha */
+#svc-web .svc-inner{grid-template-columns:1.1fr 0.9fr;align-items:center}
+#svc-web .svc-visual{order:1}
+#svc-web .svc-copy{order:2}
+/* Growth: imagen destacada al 120% (crece hacia la derecha para no pisar el texto) */
+#svc-growth{overflow:hidden}
+#svc-growth .svc-visual img{transform:scale(1.2);transform-origin:left center}
+/* Mini-features compactos bajo los CTAs: icono arriba, texto chico, en fila */
+.svc-points--mini{margin-top:30px;flex-direction:row;gap:22px}
+.svc-points--mini .svc-point{flex:1;min-width:0;padding:0;border:none;flex-direction:column;gap:9px;align-items:flex-start}
+.svc-points--mini .svc-point__ic{display:none}
+.svc-points--mini .svc-point + .svc-point{border-top:none}
+.svc-points--mini .svc-point__ic{width:32px;height:32px;border-radius:9px}
+.svc-points--mini .svc-point__ic svg{width:16px;height:16px}
+.svc-points--mini .svc-point__t{font-size:13.5px;line-height:1.25}
+.svc-points--mini .svc-point__d{font-size:12px;margin-top:3px}
+@media(max-width:820px){
+  #svc-web .svc-copy{order:1}#svc-web .svc-visual{order:2}
+  .svc-points--mini{flex-direction:column;gap:18px}
+}
 .svc-point{padding:22px 0 22px 22px;border-left:2px solid var(--rt-border);position:relative;transition:border-color .2s}
 .svc-point + .svc-point{border-top:1px solid #e6e0d4}
 .svc--marine .svc-point{border-left-color:rgba(255,255,255,.18)}
@@ -705,7 +732,7 @@ h1,h2,h3{letter-spacing:-.02em;line-height:1.1}
   <svg width="309" height="88" viewBox="0 0 309 88" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M6.92667 88C29.206 88 50.0479 79.594 65.7692 64.2707L66.3082 63.7453C76.9089 53.4129 94.0675 53.4129 104.668 63.7453C120.389 79.0687 141.321 87.4746 163.511 87.4746C185.79 87.4746 206.632 79.0687 222.353 63.7453L222.713 63.395C233.313 53.0627 250.472 53.0627 261.073 63.395C272.033 74.0776 289.82 74.0776 300.78 63.395C311.74 52.7124 311.74 35.3751 300.78 24.6925C285.059 9.36915 264.127 0.963184 241.937 0.963184C219.748 0.963184 198.816 9.36915 183.095 24.6925L182.736 25.0428C172.135 35.3751 154.976 35.3751 144.376 25.0428C128.654 9.7194 107.723 1.31343 85.5331 1.31343C63.2538 1.31343 42.4118 9.7194 26.6906 25.0428L26.1516 25.5682C21.0309 30.5592 14.2034 33.2736 7.01651 33.2736C-0.260208 33.2736 -6.99789 30.5592 -12.2084 25.5682L-14.0051 23.8169C-29.8162 8.40597 -50.748 0 -72.9375 0C-95.1269 0 -116.059 8.40597 -131.78 23.7294C-142.74 34.4119 -142.74 51.7493 -131.78 62.4318C-120.82 73.1144 -103.033 73.1144 -92.0725 62.4318C-81.4719 52.0995 -64.3132 52.0995 -53.7126 62.4318L-51.9159 64.1831C-36.2844 79.5065 -15.3526 88 6.92667 88Z" fill="#2CD5C4" fill-opacity="0.8"></path></svg>
 </div>
 
-<section class="svc" id="svc-web">
+<section class="svc svc--media" id="svc-web">
   <div class="wrap">
     <div class="svc-inner">
       <div class="svc-copy">
@@ -716,17 +743,21 @@ h1,h2,h3{letter-spacing:-.02em;line-height:1.1}
           <a href="#contacto" class="btn btn-primary">Cotizar mi sitio →</a>
           <a href="#casos" class="btn btn-outline">Ver casos de éxito</a>
         </div>
+        <div class="svc-points svc-points--icons svc-points--mini">
+          <div class="svc-point"><span class="svc-point__ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 4.5 13.5H11l-1 8.5 8.5-11.5H12z"/></svg></span><span class="svc-point__tx"><span class="svc-point__t">Rápido o invisible</span><span class="svc-point__d">quien espera se va. Tu sitio carga antes de que eso pase.</span></span></div>
+          <div class="svc-point"><span class="svc-point__ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8.2"/><circle cx="12" cy="12" r="3.2"/></svg></span><span class="svc-point__tx"><span class="svc-point__t">Diseñado para convertir</span><span class="svc-point__d">cada botón y cada scroll empuja hacia la acción.</span></span></div>
+          <div class="svc-point"><span class="svc-point__ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 3v5c0 4.5-3 7.6-7 9-4-1.4-7-4.5-7-9V6z"/><path d="M9 12l2 2 4-4"/></svg></span><span class="svc-point__tx"><span class="svc-point__t">Una experiencia que da confianza</span><span class="svc-point__d">la gente compra donde se siente segura.</span></span></div>
+        </div>
       </div>
-      <div class="svc-points">
-        <div class="svc-point"><span class="svc-point__t">Rápido o invisible</span><span class="svc-point__d">quien espera se va. Tu sitio carga antes de que eso pase.</span></div>
-        <div class="svc-point"><span class="svc-point__t">Diseñado para convertir</span><span class="svc-point__d">cada botón y cada scroll empuja hacia la acción.</span></div>
-        <div class="svc-point"><span class="svc-point__t">Una experiencia que da confianza</span><span class="svc-point__d">la gente compra donde se siente segura.</span></div>
+      <div class="svc-visual svc-parallax" id="webParallax">
+        <div class="pll-layer pll-back"><img src="assets/img/web-fondo.webp" alt="Persona trabajando en la experiencia web de una tienda" loading="lazy"></div>
+        <div class="pll-layer pll-fore"><img class="pll-float" src="assets/img/web-iconos.webp" alt="Elementos de un sitio que convierte: producto, checkout, confianza y ventas" loading="lazy"></div>
       </div>
     </div>
   </div>
 </section>
 
-<section class="svc svc--marine" id="svc-growth">
+<section class="svc svc--marine svc--media" id="svc-growth">
   <div class="wrap">
     <div class="svc-inner">
       <div class="svc-copy">
@@ -737,11 +768,14 @@ h1,h2,h3{letter-spacing:-.02em;line-height:1.1}
           <a href="#contacto" class="btn btn-primary">Quiero crecer →</a>
           <a href="#casos" class="btn btn-ghost">Ver casos de éxito</a>
         </div>
+        <div class="svc-points svc-points--mini">
+          <div class="svc-point"><span class="svc-point__t">Mejora que no se detiene</span><span class="svc-point__d">probamos, medimos y ajustamos hasta que rinde más.</span></div>
+          <div class="svc-point"><span class="svc-point__t">Decisiones con data, no con corazonadas</span><span class="svc-point__d">lo que funciona se escala, lo que no se corta.</span></div>
+          <div class="svc-point"><span class="svc-point__t">Crecimiento que se sostiene</span><span class="svc-point__d">resultados que se quedan, no picos que se caen.</span></div>
+        </div>
       </div>
-      <div class="svc-points">
-        <div class="svc-point"><span class="svc-point__t">Mejora que no se detiene</span><span class="svc-point__d">probamos, medimos y ajustamos hasta que rinde más.</span></div>
-        <div class="svc-point"><span class="svc-point__t">Decisiones con data, no con corazonadas</span><span class="svc-point__d">lo que funciona se escala, lo que no se corta.</span></div>
-        <div class="svc-point"><span class="svc-point__t">Crecimiento que se sostiene</span><span class="svc-point__d">resultados que se quedan, no picos que se caen.</span></div>
+      <div class="svc-visual">
+        <img src="assets/img/grow.webp" alt="Growth marketing: optimización continua que hace crecer los resultados" loading="lazy">
       </div>
     </div>
   </div>
@@ -1032,27 +1066,28 @@ document.getElementById('year').textContent=new Date().getFullYear();
       els.forEach(function(el){io.observe(el);});
     } else { els.forEach(run); }
   })();
-  /* Parallax de la imagen de social media (fondo + iconos) */
+  /* Parallax de imágenes (fondo + iconos) en las secciones que lo usan */
   (function(){
-    var wrap=document.getElementById('socialParallax');
-    if(!wrap) return;
-    var fore=wrap.querySelector('.pll-fore'), back=wrap.querySelector('.pll-back');
     var reduce=window.matchMedia&&window.matchMedia('(prefers-reduced-motion:reduce)').matches;
-    if(reduce||!fore) return;
-    var tx=0,ty=0,cx=0,cy=0,raf=null;
-    function loop(){
-      cx+=(tx-cx)*0.08; cy+=(ty-cy)*0.08;
-      fore.style.transform='translate3d('+(cx*26).toFixed(2)+'px,'+(cy*26).toFixed(2)+'px,0)';
-      if(back) back.style.transform='translate3d('+(cx*-11).toFixed(2)+'px,'+(cy*-11).toFixed(2)+'px,0)';
-      if(Math.abs(tx-cx)>0.001||Math.abs(ty-cy)>0.001){raf=requestAnimationFrame(loop);}
-      else{raf=null;}
-    }
-    function kick(){ if(!raf) raf=requestAnimationFrame(loop); }
-    wrap.addEventListener('mousemove',function(e){
-      var r=wrap.getBoundingClientRect();
-      tx=(e.clientX-r.left)/r.width-0.5; ty=(e.clientY-r.top)/r.height-0.5; kick();
+    if(reduce) return;
+    [].forEach.call(document.querySelectorAll('.svc-parallax'),function(wrap){
+      var fore=wrap.querySelector('.pll-fore'), back=wrap.querySelector('.pll-back');
+      if(!fore) return;
+      var tx=0,ty=0,cx=0,cy=0,raf=null;
+      function loop(){
+        cx+=(tx-cx)*0.08; cy+=(ty-cy)*0.08;
+        fore.style.transform='translate3d('+(cx*26).toFixed(2)+'px,'+(cy*26).toFixed(2)+'px,0)';
+        if(back) back.style.transform='translate3d('+(cx*-11).toFixed(2)+'px,'+(cy*-11).toFixed(2)+'px,0)';
+        if(Math.abs(tx-cx)>0.001||Math.abs(ty-cy)>0.001){raf=requestAnimationFrame(loop);}
+        else{raf=null;}
+      }
+      function kick(){ if(!raf) raf=requestAnimationFrame(loop); }
+      wrap.addEventListener('mousemove',function(e){
+        var r=wrap.getBoundingClientRect();
+        tx=(e.clientX-r.left)/r.width-0.5; ty=(e.clientY-r.top)/r.height-0.5; kick();
+      });
+      wrap.addEventListener('mouseleave',function(){ tx=0; ty=0; kick(); });
     });
-    wrap.addEventListener('mouseleave',function(){ tx=0; ty=0; kick(); });
   })();
   /* Muestra/oculta el rail flotante mientras el bloque de servicios está a la vista */
   var scope=document.querySelector('.svc-scope');
