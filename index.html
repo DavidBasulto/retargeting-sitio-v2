@@ -71,7 +71,7 @@ h1,h2,h3{letter-spacing:-.02em;line-height:1.1}
 .stat-label{font-size:13px;color:rgba(255,255,255,.75);margin-top:4px}
 
 /* ═══════════ 1b · STATS BAND (protagonismo) ═══════════ */
-.stats-band{position:relative;background:var(--rt-marine);color:#fff;padding:100px 0;overflow:hidden}
+.stats-band{position:relative;background:var(--rt-marine) url(assets/img/bg-azul.webp) center center/cover no-repeat;color:#fff;padding:100px 0;overflow:hidden}
 .stats-glow{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:1000px;max-width:92%;height:440px;background:radial-gradient(ellipse,rgba(0,176,185,.18),transparent 66%);pointer-events:none}
 .stats-head{position:relative;z-index:1;text-align:center;max-width:660px;margin:0 auto 60px}
 .stats-head .eyebrow{color:var(--rt-turquoise-light)}
@@ -197,7 +197,7 @@ h1,h2,h3{letter-spacing:-.02em;line-height:1.1}
 .casos-cta p{font-size:20px;font-weight:700;color:var(--rt-marine)}
 
 /* ═══════════ 5 · MODELO ═══════════ */
-.modelo{background:var(--rt-marine);color:#fff;padding:96px 0}
+.modelo{background:var(--rt-marine) url(assets/img/bg-azul.webp) center center/cover no-repeat;color:#fff;padding:96px 0}
 .modelo-grid{display:grid;grid-template-columns:1fr 1fr;gap:70px;align-items:center}
 .modelo h2{font-size:44px;font-weight:700}
 .modelo p{font-size:17px;line-height:28px;color:rgba(255,255,255,.8);margin-top:20px}
@@ -241,6 +241,20 @@ h1,h2,h3{letter-spacing:-.02em;line-height:1.1}
 .chf{display:flex;align-items:center;gap:11px;font-size:12px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:var(--rt-text-sec);line-height:1.2}
 .chf__ic{flex:0 0 auto;width:36px;height:36px;border-radius:9px;background:#fff;border:1px solid var(--rt-border);display:flex;align-items:center;justify-content:center;color:var(--rt-turquoise-dark)}
 .chf__ic svg{width:18px;height:18px}
+/* Contenido: sección más espaciada (más aire) + capas nuevas del parallax */
+#svc-contenido{padding:108px 0;background:url(assets/img/bg-social.webp) center center/cover no-repeat}
+#svc-contenido .svc-inner{grid-template-columns:1fr 1fr;gap:52px;align-items:center}
+#svc-contenido h2{font-size:clamp(36px,4.4vw,54px);line-height:1.1;letter-spacing:-.022em}
+#svc-contenido .svc-lead{margin-top:24px;max-width:none;font-size:18px;line-height:30px}
+#svc-contenido .svc-cta{margin-top:36px}
+#svc-contenido .content-hero__feats{margin-top:52px;gap:32px}
+#svc-contenido .chf__ic{width:42px;height:42px;border-radius:11px}
+#svc-contenido .chf__ic svg{width:20px;height:20px}
+/* Imagen más grande, esquinas redondeadas; las tarjetas pueden salirse del marco */
+#svc-contenido .svc-parallax{aspect-ratio:1400/963;overflow:visible}
+#svc-contenido .pll-layer img{transform:scale(1.12)}
+#svc-contenido .pll-fore{overflow:visible}
+@media(max-width:820px){#svc-contenido{padding:70px 0}}
 /* Separador tipo onda entre secciones: acento flotando sobre el límite */
 .wave-sep{position:relative;z-index:1;height:0;line-height:0;pointer-events:none;overflow:visible;display:flex}
 .wave-sep svg{display:block;opacity:1;transform:translateY(-50%)}
@@ -260,12 +274,17 @@ h1,h2,h3{letter-spacing:-.02em;line-height:1.1}
 #svc-web .svc-visual{order:1}
 #svc-web .svc-copy{order:2}
 /* Publicidad digital: imagen a la izquierda, texto a la derecha */
+#svc-ads{background:url(assets/img/bg-social.webp) center center/cover no-repeat}
+/* Parallax de fondo: el fondo queda fijo al viewport y el contenido pasa por encima */
+#svc-contenido,#svc-ads,.modelo,#svc-growth,.stats-band{background-attachment:fixed}
+@media(max-width:820px){#svc-contenido,#svc-ads,.modelo,#svc-growth,.stats-band{background-attachment:scroll}}
 #svc-ads .svc-inner{grid-template-columns:1.1fr 0.9fr;align-items:center}
 #svc-ads .svc-visual{order:1}
 #svc-ads .svc-copy{order:2}
 @media(max-width:820px){#svc-ads .svc-copy{order:1}#svc-ads .svc-visual{order:2}}
 /* Growth: imagen destacada al 120% (crece hacia la derecha para no pisar el texto) */
-#svc-growth{overflow:hidden}
+#svc-growth{overflow:hidden;background:var(--rt-marine) url(assets/img/bg-azul.webp) center center/cover fixed no-repeat}
+@media(max-width:820px){#svc-growth{background-attachment:scroll}}
 #svc-growth .svc-visual img{transform:scale(1.2);transform-origin:left center}
 /* Mini-features compactos bajo los CTAs: icono arriba, texto chico, en fila */
 .svc-points--mini{margin-top:30px;flex-direction:row;gap:22px}
@@ -1098,6 +1117,37 @@ document.getElementById('year').textContent=new Date().getFullYear();
       });
       wrap.addEventListener('mouseleave',function(){ tx=0; ty=0; kick(); });
     });
+  })();
+  /* Scroll parallax en las 6 secciones de servicios: el visual se desplaza a otra velocidad que el texto */
+  (function(){
+    var reduce=window.matchMedia&&window.matchMedia('(prefers-reduced-motion:reduce)').matches;
+    if(reduce) return;
+    var specs=[
+      ['#svc-estrategia .svc-points',0.06],
+      ['#ia .ia-carousel',0.05],
+      ['#svc-contenido .svc-visual',0.07],
+      ['#svc-web .svc-visual',0.07],
+      ['#svc-growth .svc-visual',0.07],
+      ['#svc-ads .svc-visual',0.07]
+    ];
+    var items=[];
+    specs.forEach(function(s){var el=document.querySelector(s[0]);if(el){el.style.willChange='transform';items.push({el:el,speed:s[1]});}});
+    if(!items.length) return;
+    var vh=window.innerHeight, ticking=false;
+    function update(){
+      ticking=false;
+      for(var i=0;i<items.length;i++){
+        var it=items[i], r=it.el.getBoundingClientRect();
+        if(r.bottom<-120||r.top>vh+120) continue; /* solo lo visible */
+        var delta=(r.top+r.height/2)-vh/2, y=-delta*it.speed;
+        if(y>40)y=40; else if(y<-40)y=-40;
+        it.el.style.transform='translate3d(0,'+y.toFixed(1)+'px,0)';
+      }
+    }
+    function onScroll(){ if(!ticking){ ticking=true; requestAnimationFrame(update); } }
+    window.addEventListener('scroll',onScroll,{passive:true});
+    window.addEventListener('resize',function(){ vh=window.innerHeight; onScroll(); });
+    update();
   })();
   /* Muestra/oculta el rail flotante mientras el bloque de servicios está a la vista */
   var scope=document.querySelector('.svc-scope');
